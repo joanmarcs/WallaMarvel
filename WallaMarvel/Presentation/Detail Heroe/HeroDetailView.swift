@@ -36,6 +36,7 @@ public final class HeroDetailView: UIView {
     public let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.accessibilityIdentifier = AccessibilityIdentifier.heroDescriptionLabel
         return label
     }()
     
@@ -43,6 +44,7 @@ public final class HeroDetailView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.accessibilityIdentifier = AccessibilityIdentifier.heroImageView
         return imageView
     }()
     
@@ -65,6 +67,7 @@ public final class HeroDetailView: UIView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(ComicCell.self, forCellWithReuseIdentifier: "ComicCell")
+        collectionView.accessibilityIdentifier = AccessibilityIdentifier.heroComicsCollectionView
         return collectionView
     }()
     
@@ -119,6 +122,8 @@ public final class HeroDetailView: UIView {
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constant.standardMargin),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constant.standardMargin),
             
+            descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 20),
+
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
             

@@ -60,6 +60,11 @@
 		E624E1A62D7A376400A8C7A0 /* ListHeroesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1A52D7A376400A8C7A0 /* ListHeroesUITests.swift */; };
 		E624E1A92D7A3A0B00A8C7A0 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1A82D7A3A0B00A8C7A0 /* AccessibilityIdentifier.swift */; };
 		E624E1AA2D7A3CE300A8C7A0 /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1A82D7A3A0B00A8C7A0 /* AccessibilityIdentifier.swift */; };
+		E624E1AE2D7A457200A8C7A0 /* MockGetHeroDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1AD2D7A457200A8C7A0 /* MockGetHeroDataUseCase.swift */; };
+		E624E1B02D7A458300A8C7A0 /* MockGetHeroComicsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1AF2D7A458300A8C7A0 /* MockGetHeroComicsUseCase.swift */; };
+		E624E1B22D7A459F00A8C7A0 /* MockHeroDetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B12D7A459F00A8C7A0 /* MockHeroDetailUI.swift */; };
+		E624E1B42D7A460100A8C7A0 /* HeroDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */; };
+		E624E1B72D7A477400A8C7A0 /* HeroDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +147,11 @@
 		E624E1A02D7A12EA00A8C7A0 /* ListHeroesPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesPresenterTests.swift; sourceTree = "<group>"; };
 		E624E1A52D7A376400A8C7A0 /* ListHeroesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesUITests.swift; sourceTree = "<group>"; };
 		E624E1A82D7A3A0B00A8C7A0 /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
+		E624E1AD2D7A457200A8C7A0 /* MockGetHeroDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetHeroDataUseCase.swift; sourceTree = "<group>"; };
+		E624E1AF2D7A458300A8C7A0 /* MockGetHeroComicsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockGetHeroComicsUseCase.swift; sourceTree = "<group>"; };
+		E624E1B12D7A459F00A8C7A0 /* MockHeroDetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeroDetailUI.swift; sourceTree = "<group>"; };
+		E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailPresenterTests.swift; sourceTree = "<group>"; };
+		E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +232,7 @@
 		1A0E3AAE2862F7E300132FCB /* WallaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				E624E1AB2D7A454800A8C7A0 /* HeroDetailTests */,
 				E624E1962D7A11FF00A8C7A0 /* ListHeroesTests */,
 				E624E18C2D7A0EDA00A8C7A0 /* DataTests */,
 				E624E1862D7A0BC500A8C7A0 /* DomaintTests */,
@@ -233,6 +244,7 @@
 		1A0E3AB82862F7E300132FCB /* WallaMarvelUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E624E1B52D7A475900A8C7A0 /* HeroDetailUITests */,
 				E624E1A22D7A373C00A8C7A0 /* ListHeroesUITests */,
 				1A0E3AB92862F7E300132FCB /* WallaMarvelUITests.swift */,
 				1A0E3ABB2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift */,
@@ -433,6 +445,33 @@
 				E624E1A82D7A3A0B00A8C7A0 /* AccessibilityIdentifier.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		E624E1AB2D7A454800A8C7A0 /* HeroDetailTests */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1AC2D7A455400A8C7A0 /* HeroDetailMocks */,
+				E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */,
+			);
+			path = HeroDetailTests;
+			sourceTree = "<group>";
+		};
+		E624E1AC2D7A455400A8C7A0 /* HeroDetailMocks */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1AD2D7A457200A8C7A0 /* MockGetHeroDataUseCase.swift */,
+				E624E1AF2D7A458300A8C7A0 /* MockGetHeroComicsUseCase.swift */,
+				E624E1B12D7A459F00A8C7A0 /* MockHeroDetailUI.swift */,
+			);
+			path = HeroDetailMocks;
+			sourceTree = "<group>";
+		};
+		E624E1B52D7A475900A8C7A0 /* HeroDetailUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */,
+			);
+			path = HeroDetailUITests;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
@@ -728,11 +767,15 @@
 			files = (
 				E624E18B2D7A0C4600A8C7A0 /* DomainTests.swift in Sources */,
 				E624E18F2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift in Sources */,
+				E624E1AE2D7A457200A8C7A0 /* MockGetHeroDataUseCase.swift in Sources */,
 				E624E1A12D7A12EA00A8C7A0 /* ListHeroesPresenterTests.swift in Sources */,
+				E624E1B22D7A459F00A8C7A0 /* MockHeroDetailUI.swift in Sources */,
 				E624E1892D7A0BE700A8C7A0 /* MockMarvelRepository.swift in Sources */,
 				E624E1932D7A104D00A8C7A0 /* MarvelDataSourceTests.swift in Sources */,
+				E624E1B42D7A460100A8C7A0 /* HeroDetailPresenterTests.swift in Sources */,
 				E624E1992D7A123300A8C7A0 /* MockGetHeroUseCase.swift in Sources */,
 				E624E19F2D7A126C00A8C7A0 /* MockListHeroesUI.swift in Sources */,
+				E624E1B02D7A458300A8C7A0 /* MockGetHeroComicsUseCase.swift in Sources */,
 				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
 				E624E1912D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift in Sources */,
 				E624E1952D7A10D700A8C7A0 /* MockAPIClient.swift in Sources */,
@@ -747,6 +790,7 @@
 				E624E1A62D7A376400A8C7A0 /* ListHeroesUITests.swift in Sources */,
 				1A0E3ABA2862F7E300132FCB /* WallaMarvelUITests.swift in Sources */,
 				1A0E3ABC2862F7E300132FCB /* WallaMarvelUITestsLaunchTests.swift in Sources */,
+				E624E1B72D7A477400A8C7A0 /* HeroDetailUITests.swift in Sources */,
 				E624E1AA2D7A3CE300A8C7A0 /* AccessibilityIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

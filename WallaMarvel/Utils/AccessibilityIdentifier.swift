@@ -10,4 +10,7 @@ import Foundation
 struct AccessibilityIdentifier {
     static let heroesTableView = "AccessibilityIdentifierHeroesTableView"
     static let heroAppearsInLabel = "AccessibilityIdentifierHeroAppearsInLabel"
+    static let heroDescriptionLabel = "AccessibilityIdentifierHeroDescriptionLabel"
+    static let heroImageView = "AccessibilityIdentifierHeroImageView"
+    static let heroComicsCollectionView = "AccessibilityIdentifierHeroComicsCollectionView"
 }
