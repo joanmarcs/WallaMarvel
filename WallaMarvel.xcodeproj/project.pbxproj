@@ -182,11 +182,8 @@
 		1A0E3A972862F7E200132FCB /* WallaMarvel */ = {
 			isa = PBXGroup;
 			children = (
-				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
-				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
-				E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */,
-				1A821EC42862FD470024D397 /* List Heroes */,
-				1A821EC52862FD500024D397 /* Detail Heroe */,
+				E624E1832D7A098600A8C7A0 /* Application */,
+				E624E1842D7A09A300A8C7A0 /* Presentation */,
 				1A821EC62862FD650024D397 /* Domain */,
 				1A821EC72862FD6E0024D397 /* Data */,
 				1A0E3AA12862F7E300132FCB /* Assets.xcassets */,
@@ -316,6 +313,25 @@
 				E624E16D2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		E624E1832D7A098600A8C7A0 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
+				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
+				E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		E624E1842D7A09A300A8C7A0 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				1A821EC42862FD470024D397 /* List Heroes */,
+				1A821EC52862FD500024D397 /* Detail Heroe */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
