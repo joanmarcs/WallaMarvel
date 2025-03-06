@@ -65,6 +65,7 @@
 		E624E1B22D7A459F00A8C7A0 /* MockHeroDetailUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B12D7A459F00A8C7A0 /* MockHeroDetailUI.swift */; };
 		E624E1B42D7A460100A8C7A0 /* HeroDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */; };
 		E624E1B72D7A477400A8C7A0 /* HeroDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */; };
+		E624E1B92D7A556500A8C7A0 /* SearchHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B82D7A556500A8C7A0 /* SearchHeroes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -152,6 +153,7 @@
 		E624E1B12D7A459F00A8C7A0 /* MockHeroDetailUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHeroDetailUI.swift; sourceTree = "<group>"; };
 		E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailPresenterTests.swift; sourceTree = "<group>"; };
 		E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailUITests.swift; sourceTree = "<group>"; };
+		E624E1B82D7A556500A8C7A0 /* SearchHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeroes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 				1AC0347E2863214900E93178 /* GetHeroes.swift */,
 				E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */,
 				E624E1752D79F93C00A8C7A0 /* GetHeroComics.swift */,
+				E624E1B82D7A556500A8C7A0 /* SearchHeroes.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -744,6 +747,7 @@
 				E624E1702D79F8B300A8C7A0 /* CharacterComicsDataContainer.swift in Sources */,
 				1A821ECC2862FF990024D397 /* String+MD5.swift in Sources */,
 				E624E1612D79ED4D00A8C7A0 /* HeroConstants.swift in Sources */,
+				E624E1B92D7A556500A8C7A0 /* SearchHeroes.swift in Sources */,
 				1A821ED6286305590024D397 /* MarvelDataSource.swift in Sources */,
 				1A3B732A286AE195007BF626 /* ListHeroesAdapter.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* Thumbnail.swift in Sources */,

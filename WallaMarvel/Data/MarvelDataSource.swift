@@ -4,6 +4,7 @@ protocol MarvelDataSourceProtocol {
     func getHeroes(offset: Int) async throws -> CharacterDataContainer
     func getHeroData(heroId: Int) async throws -> CharacterDataContainer
     func getHeroComics(heroId: Int, offset: Int) async throws -> CharacterComicsDataContainer
+    func searchHeroes(startsWith: String) async throws -> CharacterDataContainer
 }
 
 final class MarvelDataSource: MarvelDataSourceProtocol {
@@ -23,5 +24,9 @@ final class MarvelDataSource: MarvelDataSourceProtocol {
     
     func getHeroComics(heroId: Int, offset: Int) async throws -> CharacterComicsDataContainer {
         return try await apiClient.getHeroComics(heroId: heroId, offset: offset)
+    }
+    
+    func searchHeroes(startsWith: String) async throws -> CharacterDataContainer {
+        return try await apiClient.searchHeroes(startsWith: startsWith)
     }
 }

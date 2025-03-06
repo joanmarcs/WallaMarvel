@@ -24,4 +24,9 @@ final class MarvelRepository: MarvelRepositoryProtocol {
         let characterComicsDataContainer = try await dataSource.getHeroComics(heroId: heroId, offset: offset)
         return characterComicsDataContainer.comics.map { $0.toDomain() }
     }
+    
+    func searchHeroes(startsWith: String) async throws -> [Hero] {
+        let characterDataContainer = try await dataSource.searchHeroes(startsWith: startsWith)
+        return characterDataContainer.characters.map { $0.toDomain() }
+    }
 }

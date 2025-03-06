@@ -4,9 +4,12 @@ protocol APIClientProtocol {
     func getHeroes(offset: Int) async throws -> CharacterDataContainer
     func getHeroData(heroId: Int) async throws -> CharacterDataContainer
     func getHeroComics(heroId: Int, offset: Int) async throws -> CharacterComicsDataContainer
+    func searchHeroes(startsWith: String) async throws -> CharacterDataContainer
 }
 
 final class APIClient: APIClientProtocol {
+
+    
     enum Constant {
         static let privateKey = "188f9a5aa76846d907c41cbea6506e4cc455293f"
         static let publicKey = "d575c26d5c746f623518e753921ac847"
@@ -72,6 +75,14 @@ final class APIClient: APIClientProtocol {
         var params = setupAuthParams()
         params["offset"] = "\(offset)"
         params["limit"] = "\(HeroesConstants.limit)"
+
+        return try await fetch(endpoint: endpoint, params: params)
+    }
+    
+    func searchHeroes(startsWith: String) async throws -> CharacterDataContainer {
+        let endpoint = "https://gateway.marvel.com:443/v1/public/characters"
+        var params = setupAuthParams()
+        params["nameStartsWith"] = startsWith
 
         return try await fetch(endpoint: endpoint, params: params)
     }
