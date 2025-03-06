@@ -8,14 +8,25 @@
 import Foundation
 import UIKit
 
-public final class HeroDetailViewController: UIViewController {
-    public var mainView: HeroDetailView { return view as! HeroDetailView }
+final class HeroDetailViewController: UIViewController {
+    var mainView: HeroDetailView { return view as! HeroDetailView }
+    var presenter: HeroDetailPresenterProtocol?
 
-    public override func loadView() {
+    override func loadView() {
         view = HeroDetailView()
     }
 
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        presenter?.fetchHeroData()
+    }
+}
+
+extension HeroDetailViewController: HeroDetailUI {
+    func updateHeroDetail(hero: Hero) {
+        mainView.nameLabel.text = hero.name
+        //mainView.descriptionLabel.text = hero.description
+//        if let imageURL = hero.thumbnail.url {
+//        }
     }
 }
