@@ -3,7 +3,7 @@ import Foundation
 protocol APIClientProtocol {
     func getHeroes(offset: Int, completionBlock: @escaping (CharacterDataContainer) -> Void)
     func getHeroData(heroId: Int, completionBlock: @escaping (CharacterDataContainer) -> Void)
-
+    func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping (CharacterComicsDataContainer) -> Void)
 }
 
 final class APIClient: APIClientProtocol {
@@ -63,4 +63,31 @@ final class APIClient: APIClientProtocol {
             print(dataModel)
         }.resume()
     }
+    
+    func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping (CharacterComicsDataContainer) -> Void) {
+        let ts = String(Int(Date().timeIntervalSince1970))
+        let privateKey = Constant.privateKey
+        let publicKey = Constant.publicKey
+        let hash = "\(ts)\(privateKey)\(publicKey)".md5
+        let parameters: [String: String] = ["apikey": publicKey,
+                                            "ts": ts,
+                                            "hash": hash,
+                                            "offset": "\(offset)",
+                                            "limit": "\(HeroesConstants.limit)"]
+        
+        let endpoint = "https://gateway.marvel.com:443/v1/public/characters/\(heroId)/comics"
+        var urlComponent = URLComponents(string: endpoint)
+        urlComponent?.queryItems = parameters.map { (key, value) in
+            URLQueryItem(name: key, value: value)
+        }
+        
+        let urlRequest = URLRequest(url: urlComponent!.url!)
+        
+        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            let dataModel = try! JSONDecoder().decode(CharacterComicsDataContainer.self, from: data!)
+            completionBlock(dataModel)
+            print(dataModel)
+        }.resume()
+    }
+
 }

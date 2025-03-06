@@ -19,6 +19,12 @@ final class MarvelRepository: MarvelRepositoryProtocol {
             let hero = characterDataContainer.characters.first!.toDomain()
             completionBlock(hero)
         }
-
+    }
+    
+    public func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping ([Comic]) -> Void) {
+        dataSource.getHeroComics(heroId: heroId, offset: offset) { characterComicsDataContainer in
+            let comics = characterComicsDataContainer.comics.map { $0.toDomain() }
+            completionBlock(comics)
+        }
     }
 }
