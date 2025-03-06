@@ -7,7 +7,7 @@ protocol ListHeroesPresenterProtocol: AnyObject {
 }
 
 protocol ListHeroesUI: AnyObject {
-    func update(heroes: [CharacterDataModel])
+    func update(heroes: [Hero])
 }
 
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
@@ -25,9 +25,9 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        getHeroesUseCase.execute { characterDataContainer in
-            print("Characters \(characterDataContainer.characters)")
-            self.ui?.update(heroes: characterDataContainer.characters)
+        getHeroesUseCase.execute { heroes in
+            print("Characters \(heroes)")
+            self.ui?.update(heroes: heroes)
         }
     }
 }
