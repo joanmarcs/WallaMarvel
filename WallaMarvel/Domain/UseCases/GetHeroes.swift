@@ -4,7 +4,7 @@ protocol GetHeroesUseCaseProtocol {
     func execute(offset: Int, completionBlock: @escaping ([Hero]) -> Void)
 }
 
-struct GetHeroes: GetHeroesUseCaseProtocol {
+final class GetHeroes: GetHeroesUseCaseProtocol {
     private let repository: MarvelRepositoryProtocol
     
     init(repository: MarvelRepositoryProtocol) {

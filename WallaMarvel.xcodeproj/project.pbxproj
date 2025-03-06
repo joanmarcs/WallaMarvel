@@ -37,6 +37,7 @@
 		E624E1612D79ED4D00A8C7A0 /* HeroConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */; };
 		E624E1632D79EE2B00A8C7A0 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */; };
 		E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */; };
+		E624E1692D79EF2100A8C7A0 /* GetHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroConstants.swift; sourceTree = "<group>"; };
 		E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
 		E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
+		E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				1AC0347E2863214900E93178 /* GetHeroes.swift */,
+				E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E624E1582D79E95000A8C7A0 /* Hero.swift in Sources */,
+				E624E1692D79EF2100A8C7A0 /* GetHeroData.swift in Sources */,
 				1A821ED82863081A0024D397 /* MarvelRepository.swift in Sources */,
 				E624E1632D79EE2B00A8C7A0 /* HeroDetailView.swift in Sources */,
 				E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */,
