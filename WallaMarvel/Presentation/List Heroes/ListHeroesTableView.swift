@@ -12,6 +12,7 @@ final class ListHeroesView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = Constant.estimatedRowHeight
+        tableView.accessibilityIdentifier = AccessibilityIdentifier.heroesTableView
         return tableView
     }()
     

@@ -26,21 +26,16 @@ class MarvelDataSourceTests: XCTestCase {
     }
 
     func testGetHeroes_shouldCallAPIClient() async throws {
-        // Given
         mockAPIClient.shouldThrowError = false
 
-        // When
         let result = try await dataSource.getHeroes(offset: 0)
 
-        // Then
         XCTAssertEqual(result.characters.count, 2)
     }
 
     func testGetHeroes_shouldThrowError_whenAPIClientFails() async {
-        // Given
         mockAPIClient.shouldThrowError = true
 
-        // When & Then
         do {
             _ = try await dataSource.getHeroes(offset: 0)
             XCTFail("Expected an error but got success")

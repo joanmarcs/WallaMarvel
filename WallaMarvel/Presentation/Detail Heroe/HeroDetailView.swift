@@ -51,6 +51,7 @@ public final class HeroDetailView: UIView {
         label.text = "Appears in:"
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 17)
+        label.accessibilityIdentifier = AccessibilityIdentifier.heroAppearsInLabel
         return label
     }()
     
