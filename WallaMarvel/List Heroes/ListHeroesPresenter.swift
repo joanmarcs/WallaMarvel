@@ -13,16 +13,33 @@ protocol ListHeroesUI: AnyObject {
     func showError(message: String)
 }
 
+actor ListHeroesState {
+    private var heroes: [Hero] = []
+    private var isLoading = false
+    private var allHeroesLoaded = false
+    private var offset = 0
+
+    func getHeroes() -> [Hero] { heroes }
+
+    func addHeroes(_ newHeroes: [Hero]) {
+        heroes.append(contentsOf: newHeroes)
+        offset += HeroesConstants.limit
+    }
+
+    func isCurrentlyLoading() -> Bool { isLoading }
+    func setLoading(_ loading: Bool) { isLoading = loading }
+    func setAllHeroesLoaded() { allHeroesLoaded = true }
+    func hasLoadedAllHeroes() -> Bool { allHeroesLoaded }
+    func getOffset() -> Int { offset }
+}
+
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     var ui: ListHeroesUI?
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     private let navigator: ListHeroesNavigatorProtocol
     private var fetchTask: Task<Void, Never>?
     
-    private var offset = 0
-    private var isLoading = false
-    private var allHeroesLoaded = false
-    private var heroes: [Hero] = []
+    private let state = ListHeroesState()
     
     public init(getHeroesUseCase: GetHeroesUseCaseProtocol, navigator: ListHeroesNavigatorProtocol) {
         self.getHeroesUseCase = getHeroesUseCase
@@ -37,35 +54,34 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        guard !isLoading, !allHeroesLoaded else { return }
-        
         fetchTask?.cancel()
-        isLoading = true
         
         fetchTask = Task {
+            guard !(await state.isCurrentlyLoading()), !(await state.hasLoadedAllHeroes()) else { return }
+            
+            await state.setLoading(true)
+            
             do {
-                let newHeroes = try await getHeroesUseCase.execute(offset: offset)
-                
+                let newHeroes = try await getHeroesUseCase.execute(offset: await state.getOffset())
                 if Task.isCancelled { return }
-
+                
+                if newHeroes.isEmpty {
+                    await state.setAllHeroesLoaded()
+                } else {
+                    await state.addHeroes(newHeroes)
+                }
+                
                 await MainActor.run {
-                    if newHeroes.isEmpty {
-                        self.allHeroesLoaded = true
-                    } else {
-                        self.heroes.append(contentsOf: newHeroes)
-                        self.offset += HeroesConstants.limit
-                        self.ui?.update(heroes: newHeroes)
-                    }
-                    self.isLoading = false
+                    self.ui?.update(heroes: newHeroes)
                 }
             } catch {
                 if Task.isCancelled { return }
-
+                
                 await MainActor.run {
                     self.ui?.showError(message: "Failed to load heroes.")
-                    self.isLoading = false
                 }
             }
+            await state.setLoading(false)
         }
     }
     
