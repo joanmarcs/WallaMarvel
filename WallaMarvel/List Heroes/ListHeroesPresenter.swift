@@ -4,6 +4,7 @@ protocol ListHeroesPresenterProtocol: AnyObject {
     var ui: ListHeroesUI? { get set }
     func screenTitle() -> String
     func getHeroes()
+    func didSelectHero(_ hero: Hero)
 }
 
 protocol ListHeroesUI: AnyObject {
@@ -13,14 +14,17 @@ protocol ListHeroesUI: AnyObject {
 final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     var ui: ListHeroesUI?
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
+    private let navigator: ListHeroesNavigatorProtocol
     
     private var offset = 0
     private var isLoading = false
     private var allHeroesLoaded = false
     private var heroes: [Hero] = []
     
-    init(getHeroesUseCase: GetHeroesUseCaseProtocol) {
+    public init(getHeroesUseCase: GetHeroesUseCaseProtocol, navigator: ListHeroesNavigatorProtocol) {
         self.getHeroesUseCase = getHeroesUseCase
+        self.navigator = navigator
+
     }
     
     func screenTitle() -> String {
@@ -48,5 +52,10 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
             }
         }
     }
+    
+    func didSelectHero(_ hero: Hero) {
+        navigator.navigateToHeroDetail(heroId: hero.id)
+    }
+
 }
 

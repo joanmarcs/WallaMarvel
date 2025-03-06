@@ -19,12 +19,14 @@ final class HeroDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchHeroData()
+        presenter?.ui = self
     }
 }
 
 extension HeroDetailViewController: HeroDetailUI {
     func updateHeroDetail(hero: Hero) {
-        mainView.nameLabel.text = hero.name
+        self.title = hero.name
+        //mainView.nameLabel.text = hero.name
         //mainView.descriptionLabel.text = hero.description
 //        if let imageURL = hero.thumbnail.url {
 //        }

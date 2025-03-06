@@ -21,15 +21,10 @@ public final class HeroDetailView: UIView {
         return stackView
     }()
     
-    public let nameLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .center
-        return label
-    }()
-    
     public let descriptionLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor quam id massa faucibus dignissim. Nullam eget metus id nisl malesuada condimentum. Nam viverra fringilla erat, ut fermentum nunc feugiat eu."
         return label
     }()
     
@@ -57,7 +52,6 @@ public final class HeroDetailView: UIView {
     
     private func addSubviews() {
         stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(descriptionLabel)
         addSubview(stackView)
     }

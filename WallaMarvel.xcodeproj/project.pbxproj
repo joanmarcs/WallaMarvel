@@ -39,6 +39,7 @@
 		E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */; };
 		E624E1692D79EF2100A8C7A0 /* GetHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */; };
 		E624E16B2D79EF8300A8C7A0 /* HeroDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */; };
+		E624E16E2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E16D2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroData.swift; sourceTree = "<group>"; };
 		E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailPresenter.swift; sourceTree = "<group>"; };
+		E624E16D2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeroesNavigatorProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 		1A821EC42862FD470024D397 /* List Heroes */ = {
 			isa = PBXGroup;
 			children = (
+				E624E16C2D79F5F800A8C7A0 /* Navigation */,
 				1A0E3A9C2862F7E200132FCB /* ListHeroesViewController.swift */,
 				1A3B7329286AE195007BF626 /* ListHeroesAdapter.swift */,
 				1A3B7325286ADD1E007BF626 /* ListHeroesTableView.swift */,
@@ -284,6 +287,14 @@
 				E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		E624E16C2D79F5F800A8C7A0 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				E624E16D2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
@@ -561,6 +572,7 @@
 				E624E16B2D79EF8300A8C7A0 /* HeroDetailPresenter.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
+				E624E16E2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
