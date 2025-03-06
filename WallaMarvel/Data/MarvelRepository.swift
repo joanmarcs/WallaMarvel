@@ -7,8 +7,8 @@ final class MarvelRepository: MarvelRepositoryProtocol {
         self.dataSource = dataSource
     }
     
-    func getHeroes(completionBlock: @escaping ([Hero]) -> Void) {
-        dataSource.getHeroes { characterDataContainer in
+    public func getHeroes(offset: Int, completionBlock: @escaping ([Hero]) -> Void) {
+        dataSource.getHeroes(offset: offset) { characterDataContainer in
             let heroes = characterDataContainer.characters.map { $0.toDomain() }
             completionBlock(heroes)
         }

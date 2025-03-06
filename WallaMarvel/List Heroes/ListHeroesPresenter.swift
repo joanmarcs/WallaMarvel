@@ -25,7 +25,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        getHeroesUseCase.execute { heroes in
+        getHeroesUseCase.execute(offset: 0) { heroes in
             print("Characters \(heroes)")
             self.ui?.update(heroes: heroes)
         }

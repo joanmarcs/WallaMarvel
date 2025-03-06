@@ -8,5 +8,5 @@
 import Foundation
 
 protocol MarvelRepositoryProtocol {
-    func getHeroes(completionBlock: @escaping ([Hero]) -> Void)
+    func getHeroes(offset: Int, completionBlock: @escaping ([Hero]) -> Void)
 }
