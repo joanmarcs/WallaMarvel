@@ -36,6 +36,7 @@
 		E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */; };
 		E624E1612D79ED4D00A8C7A0 /* HeroConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */; };
 		E624E1632D79EE2B00A8C7A0 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */; };
+		E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroConstants.swift; sourceTree = "<group>"; };
 		E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
+		E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */,
+				E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */,
 			);
 			path = "Detail Heroe";
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				E624E1582D79E95000A8C7A0 /* Hero.swift in Sources */,
 				1A821ED82863081A0024D397 /* MarvelRepository.swift in Sources */,
 				E624E1632D79EE2B00A8C7A0 /* HeroDetailView.swift in Sources */,
+				E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */,
 				1A0E3A9D2862F7E200132FCB /* ListHeroesViewController.swift in Sources */,
 				E624E15A2D79E95B00A8C7A0 /* HeroImage.swift in Sources */,
 				E624E1552D79E8C900A8C7A0 /* MarvelRepositoryProtocol.swift in Sources */,
