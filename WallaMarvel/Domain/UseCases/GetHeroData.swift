@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetHeroDataUseCaseProtocol {
-    func execute(heroId: Int, completion: @escaping (Hero) -> Void)
+    func execute(heroId: Int) async throws -> Hero
 }
 
 final class GetHeroDataUseCase: GetHeroDataUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetHeroDataUseCase: GetHeroDataUseCaseProtocol {
         self.repository = repository
     }
 
-    public func execute(heroId: Int, completion: @escaping (Hero) -> Void) {
-        repository.getHeroData(heroId: heroId, completionBlock: completion)
+    public func execute(heroId: Int) async throws -> Hero {
+        return try await repository.getHeroData(heroId: heroId)
     }
 }

@@ -7,24 +7,21 @@ final class MarvelRepository: MarvelRepositoryProtocol {
         self.dataSource = dataSource
     }
     
-    public func getHeroes(offset: Int, completionBlock: @escaping ([Hero]) -> Void) {
-        dataSource.getHeroes(offset: offset) { characterDataContainer in
-            let heroes = characterDataContainer.characters.map { $0.toDomain() }
-            completionBlock(heroes)
-        }
+    public func getHeroes(offset: Int) async throws -> [Hero] {
+        let characterDataContainer = try await dataSource.getHeroes(offset: offset)
+        return characterDataContainer.characters.map { $0.toDomain() }
     }
     
-    public func getHeroData(heroId: Int, completionBlock: @escaping (Hero) -> Void) {
-        dataSource.getHeroData(heroId: heroId) { characterDataContainer in
-            let hero = characterDataContainer.characters.first!.toDomain()
-            completionBlock(hero)
+    public func getHeroData(heroId: Int) async throws -> Hero {
+        let characterDataContainer = try await dataSource.getHeroData(heroId: heroId)
+        guard let hero = characterDataContainer.characters.first else {
+            throw APIError.serverError
         }
+        return hero.toDomain()
     }
     
-    public func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping ([Comic]) -> Void) {
-        dataSource.getHeroComics(heroId: heroId, offset: offset) { characterComicsDataContainer in
-            let comics = characterComicsDataContainer.comics.map { $0.toDomain() }
-            completionBlock(comics)
-        }
+    public func getHeroComics(heroId: Int, offset: Int) async throws -> [Comic] {
+        let characterComicsDataContainer = try await dataSource.getHeroComics(heroId: heroId, offset: offset)
+        return characterComicsDataContainer.comics.map { $0.toDomain() }
     }
 }

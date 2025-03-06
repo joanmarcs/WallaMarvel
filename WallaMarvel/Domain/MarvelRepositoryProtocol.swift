@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MarvelRepositoryProtocol {
-    func getHeroes(offset: Int, completionBlock: @escaping ([Hero]) -> Void)
-    func getHeroData(heroId: Int, completionBlock: @escaping (Hero) -> Void)
-    func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping ([Comic]) -> Void)
+    func getHeroes(offset: Int) async throws -> [Hero]
+    func getHeroData(heroId: Int) async throws -> Hero
+    func getHeroComics(heroId: Int, offset: Int) async throws -> [Comic]
 }

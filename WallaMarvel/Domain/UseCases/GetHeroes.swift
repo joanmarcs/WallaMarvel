@@ -1,7 +1,7 @@
 import Foundation
 
 protocol GetHeroesUseCaseProtocol {
-    func execute(offset: Int, completionBlock: @escaping ([Hero]) -> Void)
+    func execute(offset: Int) async throws -> [Hero]
 }
 
 final class GetHeroes: GetHeroesUseCaseProtocol {
@@ -11,7 +11,7 @@ final class GetHeroes: GetHeroesUseCaseProtocol {
         self.repository = repository
     }
     
-    public func execute(offset: Int, completionBlock: @escaping ([Hero]) -> Void) {
-        repository.getHeroes(offset: offset, completionBlock: completionBlock)
+    public func execute(offset: Int) async throws -> [Hero]  {
+        return try await repository.getHeroes(offset: offset)
     }
 }

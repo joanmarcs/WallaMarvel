@@ -8,7 +8,7 @@
 import Foundation
 
 protocol GetHeroComicsUseCaseProtocol {
-    func execute(heroId: Int, offset: Int, completionBlock: @escaping ([Comic]) -> Void)
+    func execute(heroId: Int, offset: Int) async throws -> [Comic]
 }
 
 final class GetHeroComics: GetHeroComicsUseCaseProtocol {
@@ -18,7 +18,7 @@ final class GetHeroComics: GetHeroComicsUseCaseProtocol {
         self.repository = repository
     }
     
-    public func execute(heroId: Int, offset: Int, completionBlock: @escaping ([Comic]) -> Void) {
-        repository.getHeroComics(heroId: heroId, offset: offset, completionBlock: completionBlock)
+    public func execute(heroId: Int, offset: Int) async throws -> [Comic] {
+        return try await repository.getHeroComics(heroId: heroId, offset: offset)
     }
 }

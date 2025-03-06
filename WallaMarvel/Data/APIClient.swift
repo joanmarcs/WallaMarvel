@@ -1,9 +1,9 @@
 import Foundation
 
 protocol APIClientProtocol {
-    func getHeroes(offset: Int, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    func getHeroData(heroId: Int, completionBlock: @escaping (CharacterDataContainer) -> Void)
-    func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping (CharacterComicsDataContainer) -> Void)
+    func getHeroes(offset: Int) async throws -> CharacterDataContainer
+    func getHeroData(heroId: Int) async throws -> CharacterDataContainer
+    func getHeroComics(heroId: Int, offset: Int) async throws -> CharacterComicsDataContainer
 }
 
 final class APIClient: APIClientProtocol {
@@ -14,80 +14,66 @@ final class APIClient: APIClientProtocol {
     
     init() { }
     
-    func getHeroes(offset: Int, completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        let ts = String(Int(Date().timeIntervalSince1970))
-        let privateKey = Constant.privateKey
-        let publicKey = Constant.publicKey
-        let hash = "\(ts)\(privateKey)\(publicKey)".md5
-        let parameters: [String: String] = ["apikey": publicKey,
-                                            "ts": ts,
-                                            "hash": hash,
-                                            "offset": "\(offset)",
-                                            "limit": "\(HeroesConstants.limit)"]
+    private func setupAuthParams() -> [String: String] {
+            let ts = String(Int(Date().timeIntervalSince1970))
+            let hash = "\(ts)\(Constant.privateKey)\(Constant.publicKey)".md5
+            return [
+                "apikey": Constant.publicKey,
+                "ts": ts,
+                "hash": hash
+            ]
+    }
+    
+    private func fetch<T: Decodable>(endpoint: String, params: [String: String]) async throws -> T {
+        var urlComponent = URLComponents(string: endpoint)
+        urlComponent?.queryItems = params.map { URLQueryItem(name: $0.key, value: $0.value) }
+        
+        guard let url = urlComponent?.url else {
+            throw APIError.invalidURL
 
+        }
+        
+        var urlRequest = URLRequest(url: url)
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: urlRequest)
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                throw APIError.serverError
+            }
+            
+            return try JSONDecoder().decode(T.self, from: data)
+        } catch let decodingError as DecodingError {
+            throw APIError.decodingError(decodingError.localizedDescription)
+        } catch {
+            throw APIError.networkError(error.localizedDescription)
+        }
+
+    }
+    
+    func getHeroes(offset: Int) async throws -> CharacterDataContainer {
         let endpoint = "https://gateway.marvel.com:443/v1/public/characters"
-        var urlComponent = URLComponents(string: endpoint)
-        urlComponent?.queryItems = parameters.map { (key, value) in
-            URLQueryItem(name: key, value: value)
-        }
-        
-        let urlRequest = URLRequest(url: urlComponent!.url!)
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
-            completionBlock(dataModel)
-            print(dataModel)
-        }.resume()
+        var params = setupAuthParams()
+        params["offset"] = "\(offset)"
+        params["limit"] = "\(HeroesConstants.limit)"
+
+        return try await fetch(endpoint: endpoint, params: params)
     }
-    
-    func getHeroData(heroId: Int, completionBlock: @escaping (CharacterDataContainer) -> Void) {
-        let ts = String(Int(Date().timeIntervalSince1970))
-        let privateKey = Constant.privateKey
-        let publicKey = Constant.publicKey
-        let hash = "\(ts)\(privateKey)\(publicKey)".md5
-        let parameters: [String: String] = ["apikey": publicKey,
-                                            "ts": ts,
-                                            "hash": hash]
-        
+
+    func getHeroData(heroId: Int) async throws -> CharacterDataContainer {
         let endpoint = "https://gateway.marvel.com:443/v1/public/characters/\(heroId)"
-        var urlComponent = URLComponents(string: endpoint)
-        urlComponent?.queryItems = parameters.map { (key, value) in
-            URLQueryItem(name: key, value: value)
-        }
-        
-        let urlRequest = URLRequest(url: urlComponent!.url!)
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterDataContainer.self, from: data!)
-            completionBlock(dataModel)
-            print(dataModel)
-        }.resume()
+        let params = setupAuthParams()
+
+        return try await fetch(endpoint: endpoint, params: params)
     }
-    
-    func getHeroComics(heroId: Int, offset: Int, completionBlock: @escaping (CharacterComicsDataContainer) -> Void) {
-        let ts = String(Int(Date().timeIntervalSince1970))
-        let privateKey = Constant.privateKey
-        let publicKey = Constant.publicKey
-        let hash = "\(ts)\(privateKey)\(publicKey)".md5
-        let parameters: [String: String] = ["apikey": publicKey,
-                                            "ts": ts,
-                                            "hash": hash,
-                                            "offset": "\(offset)",
-                                            "limit": "\(HeroesConstants.limit)"]
-        
+
+    func getHeroComics(heroId: Int, offset: Int) async throws -> CharacterComicsDataContainer {
         let endpoint = "https://gateway.marvel.com:443/v1/public/characters/\(heroId)/comics"
-        var urlComponent = URLComponents(string: endpoint)
-        urlComponent?.queryItems = parameters.map { (key, value) in
-            URLQueryItem(name: key, value: value)
-        }
-        
-        let urlRequest = URLRequest(url: urlComponent!.url!)
-        
-        URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            let dataModel = try! JSONDecoder().decode(CharacterComicsDataContainer.self, from: data!)
-            completionBlock(dataModel)
-            print(dataModel)
-        }.resume()
+        var params = setupAuthParams()
+        params["offset"] = "\(offset)"
+        params["limit"] = "\(HeroesConstants.limit)"
+
+        return try await fetch(endpoint: endpoint, params: params)
     }
 
 }
