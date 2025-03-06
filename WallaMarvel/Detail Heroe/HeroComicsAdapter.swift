@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 final class HeroComicsAdapter: NSObject, UICollectionViewDataSource {
-    private var comics: [Comic] {
+    var comics: [Comic] {
         didSet {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

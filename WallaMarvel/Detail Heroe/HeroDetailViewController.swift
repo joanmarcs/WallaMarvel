@@ -22,6 +22,7 @@ final class HeroDetailViewController: UIViewController {
         super.viewDidLoad()
         comicsProvider = HeroComicsAdapter(collectionView: mainView.comicsCollectionView)
         presenter?.fetchHeroData()
+        presenter?.getHeroComics()
         presenter?.ui = self
         
         mainView.comicsCollectionView.delegate = self
@@ -34,6 +35,10 @@ extension HeroDetailViewController: HeroDetailUI {
         mainView.descriptionLabel.text = hero.description
         let imageURL = hero.thumbnail.url
         mainView.imageView.kf.setImage(with: URL(string: hero.thumbnail.url))
+    }
+    
+    func updateComics(comics: [Comic]) {
+        comicsProvider?.comics = comics
     }
 }
 

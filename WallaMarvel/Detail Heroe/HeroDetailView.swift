@@ -63,6 +63,7 @@ public final class HeroDetailView: UIView {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ComicCell.self, forCellWithReuseIdentifier: "ComicCell")
         return collectionView
     }()
     

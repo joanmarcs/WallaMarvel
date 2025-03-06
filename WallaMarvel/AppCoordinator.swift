@@ -37,8 +37,9 @@ final class AppCoordinator: ListHeroesNavigatorProtocol  {
     func navigateToHeroDetail(heroId: Int) {
         let repository = MarvelRepository(dataSource: MarvelDataSource())
         let getHeroDataUseCase = GetHeroDataUseCase(repository: repository)
+        let getHeroComicsUseCase = GetHeroComics(repository: repository)
 
-        let presenter = HeroDetailPresenter(heroId: heroId, getHeroDataUseCase: getHeroDataUseCase)
+        let presenter = HeroDetailPresenter(heroId: heroId, getHeroDataUseCase: getHeroDataUseCase, getHeroComicsUseCase: getHeroComicsUseCase)
         let heroDetailViewController = HeroDetailViewController()
         heroDetailViewController.presenter = presenter
 
