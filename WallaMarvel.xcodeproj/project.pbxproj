@@ -38,6 +38,7 @@
 		E624E1632D79EE2B00A8C7A0 /* HeroDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */; };
 		E624E1652D79EE7100A8C7A0 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */; };
 		E624E1692D79EF2100A8C7A0 /* GetHeroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */; };
+		E624E16B2D79EF8300A8C7A0 /* HeroDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailView.swift; sourceTree = "<group>"; };
 		E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		E624E1682D79EF2100A8C7A0 /* GetHeroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroData.swift; sourceTree = "<group>"; };
+		E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 			children = (
 				E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */,
 				E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */,
+				E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */,
 			);
 			path = "Detail Heroe";
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
 				E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,
+				E624E16B2D79EF8300A8C7A0 /* HeroDetailPresenter.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
 			);
