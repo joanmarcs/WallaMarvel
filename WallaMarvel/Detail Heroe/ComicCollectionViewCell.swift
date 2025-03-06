@@ -13,6 +13,7 @@ final class ComicCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -20,8 +21,18 @@ final class ComicCell: UICollectionViewCell {
     
     private let comicImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
+    }()
+    
+    public let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 8
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
     }()
 
     override init(frame: CGRect) {
@@ -39,20 +50,22 @@ final class ComicCell: UICollectionViewCell {
     }
     
     private func addSubviews() {
-        addSubview(comicImageView)
-        addSubview(titleLabel)
+        stackView.addArrangedSubview(comicImageView)
+        stackView.addArrangedSubview(titleLabel)
+        addSubview(stackView)
     }
     
     private func addContraints() {
         NSLayoutConstraint.activate([
-            comicImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            comicImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
-            comicImageView.heightAnchor.constraint(equalToConstant: 80),
-            comicImageView.widthAnchor.constraint(equalToConstant: 80),
-            comicImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
-            
-            titleLabel.leadingAnchor.constraint(equalTo: comicImageView.trailingAnchor, constant: 12),
-            titleLabel.topAnchor.constraint(equalTo: comicImageView.topAnchor, constant: 8),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            comicImageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            comicImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.7),
+
+            titleLabel.widthAnchor.constraint(equalTo: stackView.widthAnchor, multiplier: 0.9)
         ])
     }
 

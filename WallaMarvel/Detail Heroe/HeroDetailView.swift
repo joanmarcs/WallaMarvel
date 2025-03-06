@@ -57,8 +57,8 @@ public final class HeroDetailView: UIView {
     public let comicsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 120, height: 180)
-        
+        layout.itemSize = CGSize(width: 180, height: 340)
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
@@ -121,7 +121,7 @@ public final class HeroDetailView: UIView {
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
             
-            comicsCollectionView.heightAnchor.constraint(equalToConstant: 200)
+            comicsCollectionView.heightAnchor.constraint(equalToConstant: 380)
         ])
     }
 }
