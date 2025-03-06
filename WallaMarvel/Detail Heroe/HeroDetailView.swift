@@ -42,6 +42,7 @@ public final class HeroDetailView: UIView {
     public let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -89,10 +90,13 @@ public final class HeroDetailView: UIView {
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constant.standardMargin),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constant.standardMargin),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constant.standardMargin),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constant.standardMargin),
+            
+            imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
+            imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor)
         ])
     }
 }
