@@ -7,15 +7,16 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 final class HeroDetailViewController: UIViewController {
     var mainView: HeroDetailView { return view as! HeroDetailView }
     var presenter: HeroDetailPresenterProtocol?
-
+    
     override func loadView() {
         view = HeroDetailView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchHeroData()
@@ -26,9 +27,8 @@ final class HeroDetailViewController: UIViewController {
 extension HeroDetailViewController: HeroDetailUI {
     func updateHeroDetail(hero: Hero) {
         self.title = hero.name
-        //mainView.nameLabel.text = hero.name
-        //mainView.descriptionLabel.text = hero.description
-//        if let imageURL = hero.thumbnail.url {
-//        }
+        mainView.descriptionLabel.text = hero.description
+        let imageURL = hero.thumbnail.url
+        mainView.imageView.kf.setImage(with: URL(string: hero.thumbnail.url))
     }
 }
