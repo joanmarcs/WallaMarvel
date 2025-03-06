@@ -45,6 +45,9 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
         fetchTask = Task {
             do {
                 let newHeroes = try await getHeroesUseCase.execute(offset: offset)
+                
+                if Task.isCancelled { return }
+
                 await MainActor.run {
                     if newHeroes.isEmpty {
                         self.allHeroesLoaded = true
@@ -56,6 +59,8 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
                     self.isLoading = false
                 }
             } catch {
+                if Task.isCancelled { return }
+
                 await MainActor.run {
                     self.ui?.showError(message: "Failed to load heroes.")
                     self.isLoading = false

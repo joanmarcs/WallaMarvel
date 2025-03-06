@@ -73,4 +73,10 @@ final class ComicCell: UICollectionViewCell {
         titleLabel.text = model.title
         comicImageView.kf.setImage(with: URL(string: model.thumbnail.url)!)
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        comicImageView.image = nil
+        titleLabel.text = nil
+    }
 }
