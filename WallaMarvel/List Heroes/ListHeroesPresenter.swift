@@ -15,7 +15,6 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     
     private var offset = 0
-    private let limit = 20
     private var isLoading = false
     private var allHeroesLoaded = false
     private var heroes: [Hero] = []
@@ -42,7 +41,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
                     self.allHeroesLoaded = true
                 } else {
                     self.heroes.append(contentsOf: newHeroes)
-                    self.offset += self.limit
+                    self.offset += HeroesConstants.limit
                     self.ui?.update(heroes: self.heroes)
                 }
                 self.isLoading = false

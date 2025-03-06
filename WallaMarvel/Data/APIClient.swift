@@ -21,7 +21,7 @@ final class APIClient: APIClientProtocol {
                                             "ts": ts,
                                             "hash": hash,
                                             "offset": "\(offset)",
-                                            "limit": "20"]
+                                            "limit": "\(HeroesConstants.limit)"]
 
         let endpoint = "https://gateway.marvel.com:443/v1/public/characters"
         var urlComponent = URLComponents(string: endpoint)

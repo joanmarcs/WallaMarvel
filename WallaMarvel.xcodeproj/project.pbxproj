@@ -34,6 +34,7 @@
 		E624E1582D79E95000A8C7A0 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1572D79E95000A8C7A0 /* Hero.swift */; };
 		E624E15A2D79E95B00A8C7A0 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1592D79E95B00A8C7A0 /* HeroImage.swift */; };
 		E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */; };
+		E624E1612D79ED4D00A8C7A0 /* HeroConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		E624E1572D79E95000A8C7A0 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		E624E1592D79E95B00A8C7A0 /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
 		E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				E624E1542D79E8C900A8C7A0 /* MarvelRepositoryProtocol.swift */,
 				E624E1562D79E93A00A8C7A0 /* Entities */,
 				1AC0347D286320F000E93178 /* UseCases */,
+				E624E15F2D79ED3F00A8C7A0 /* Constants */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -261,6 +264,14 @@
 				E624E1592D79E95B00A8C7A0 /* HeroImage.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		E624E15F2D79ED3F00A8C7A0 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1602D79ED4D00A8C7A0 /* HeroConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
@@ -523,6 +534,7 @@
 				1A7B9BBD286D81AA00EBC1A6 /* CharacterDataModel.swift in Sources */,
 				1A0E3A992862F7E200132FCB /* AppDelegate.swift in Sources */,
 				1A821ECC2862FF990024D397 /* String+MD5.swift in Sources */,
+				E624E1612D79ED4D00A8C7A0 /* HeroConstants.swift in Sources */,
 				1A821ED6286305590024D397 /* MarvelDataSource.swift in Sources */,
 				1A3B732A286AE195007BF626 /* ListHeroesAdapter.swift in Sources */,
 				1A7B9BBF286D81B600EBC1A6 /* Thumbnail.swift in Sources */,
