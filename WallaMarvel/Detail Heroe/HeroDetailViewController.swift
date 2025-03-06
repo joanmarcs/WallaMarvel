@@ -12,15 +12,19 @@ import Kingfisher
 final class HeroDetailViewController: UIViewController {
     var mainView: HeroDetailView { return view as! HeroDetailView }
     var presenter: HeroDetailPresenterProtocol?
-    
+    private var comicsProvider: HeroComicsAdapter?
+
     override func loadView() {
         view = HeroDetailView()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        comicsProvider = HeroComicsAdapter(collectionView: mainView.comicsCollectionView)
         presenter?.fetchHeroData()
         presenter?.ui = self
+        
+        mainView.comicsCollectionView.delegate = self
     }
 }
 
@@ -32,3 +36,8 @@ extension HeroDetailViewController: HeroDetailUI {
         mainView.imageView.kf.setImage(with: URL(string: hero.thumbnail.url))
     }
 }
+
+extension HeroDetailViewController: UICollectionViewDelegate {
+
+}
+
