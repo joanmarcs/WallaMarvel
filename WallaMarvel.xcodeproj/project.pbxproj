@@ -44,6 +44,8 @@
 		E624E1722D79F8D700A8C7A0 /* ComicDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1712D79F8D700A8C7A0 /* ComicDataModel.swift */; };
 		E624E1742D79F90100A8C7A0 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1732D79F90100A8C7A0 /* Comic.swift */; };
 		E624E1762D79F93C00A8C7A0 /* GetHeroComics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1752D79F93C00A8C7A0 /* GetHeroComics.swift */; };
+		E624E1782D79F9F700A8C7A0 /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1772D79F9F700A8C7A0 /* ComicCollectionViewCell.swift */; };
+		E624E17A2D79FA1E00A8C7A0 /* HeroComicsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1792D79FA1E00A8C7A0 /* HeroComicsAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		E624E1712D79F8D700A8C7A0 /* ComicDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDataModel.swift; sourceTree = "<group>"; };
 		E624E1732D79F90100A8C7A0 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		E624E1752D79F93C00A8C7A0 /* GetHeroComics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeroComics.swift; sourceTree = "<group>"; };
+		E624E1772D79F9F700A8C7A0 /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
+		E624E1792D79FA1E00A8C7A0 /* HeroComicsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroComicsAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +230,8 @@
 				E624E1622D79EE2B00A8C7A0 /* HeroDetailView.swift */,
 				E624E1642D79EE7100A8C7A0 /* HeroDetailViewController.swift */,
 				E624E16A2D79EF8300A8C7A0 /* HeroDetailPresenter.swift */,
+				E624E1772D79F9F700A8C7A0 /* ComicCollectionViewCell.swift */,
+				E624E1792D79FA1E00A8C7A0 /* HeroComicsAdapter.swift */,
 			);
 			path = "Detail Heroe";
 			sourceTree = "<group>";
@@ -585,7 +591,9 @@
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
 				E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,
+				E624E17A2D79FA1E00A8C7A0 /* HeroComicsAdapter.swift in Sources */,
 				E624E16B2D79EF8300A8C7A0 /* HeroDetailPresenter.swift in Sources */,
+				E624E1782D79F9F700A8C7A0 /* ComicCollectionViewCell.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
 				E624E16E2D79F61500A8C7A0 /* ListHeroesNavigatorProtocol.swift in Sources */,
