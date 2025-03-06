@@ -46,6 +46,26 @@ public final class HeroDetailView: UIView {
         return imageView
     }()
     
+    public let comicsTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Appears in:"
+        label.textAlignment = .left
+        label.font = .boldSystemFont(ofSize: 17)
+        return label
+    }()
+    
+    public let comicsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 120, height: 180)
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -87,6 +107,8 @@ public final class HeroDetailView: UIView {
     private func setupContent() {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(descriptionLabel)
+        stackView.addArrangedSubview(comicsTitleLabel)
+        stackView.addArrangedSubview(comicsCollectionView)
         contentView.addSubview(stackView)
         
         NSLayoutConstraint.activate([
@@ -96,7 +118,9 @@ public final class HeroDetailView: UIView {
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constant.standardMargin),
             
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-            imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor)
+            imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
+            
+            comicsCollectionView.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
 }
