@@ -14,6 +14,12 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     var ui: ListHeroesUI?
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     
+    private var offset = 0
+    private let limit = 20
+    private var isLoading = false
+    private var allHeroesLoaded = false
+    private var heroes: [Hero] = []
+    
     init(getHeroesUseCase: GetHeroesUseCaseProtocol) {
         self.getHeroesUseCase = getHeroesUseCase
     }
@@ -25,9 +31,22 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     // MARK: UseCases
     
     func getHeroes() {
-        getHeroesUseCase.execute(offset: 0) { heroes in
-            print("Characters \(heroes)")
-            self.ui?.update(heroes: heroes)
+        guard !isLoading, !allHeroesLoaded else { return }
+        isLoading = true
+        
+        getHeroesUseCase.execute(offset: offset) { [weak self] newHeroes in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                if newHeroes.isEmpty {
+                    self.allHeroesLoaded = true
+                } else {
+                    self.heroes.append(contentsOf: newHeroes)
+                    self.offset += self.limit
+                    self.ui?.update(heroes: self.heroes)
+                }
+                self.isLoading = false
+            }
         }
     }
 }
