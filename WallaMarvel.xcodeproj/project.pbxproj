@@ -33,6 +33,7 @@
 		E624E1552D79E8C900A8C7A0 /* MarvelRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1542D79E8C900A8C7A0 /* MarvelRepositoryProtocol.swift */; };
 		E624E1582D79E95000A8C7A0 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1572D79E95000A8C7A0 /* Hero.swift */; };
 		E624E15A2D79E95B00A8C7A0 /* HeroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1592D79E95B00A8C7A0 /* HeroImage.swift */; };
+		E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E624E1542D79E8C900A8C7A0 /* MarvelRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E624E1572D79E95000A8C7A0 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		E624E1592D79E95B00A8C7A0 /* HeroImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroImage.swift; sourceTree = "<group>"; };
+		E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				1A0E3A982862F7E200132FCB /* AppDelegate.swift */,
 				1A0E3A9A2862F7E200132FCB /* SceneDelegate.swift */,
+				E624E15B2D79EB4A00A8C7A0 /* AppCoordinator.swift */,
 				1A821EC42862FD470024D397 /* List Heroes */,
 				1A821EC52862FD500024D397 /* Detail Heroe */,
 				1A821EC62862FD650024D397 /* Domain */,
@@ -526,6 +529,7 @@
 				1A821EDA2863096C0024D397 /* ListHeroesPresenter.swift in Sources */,
 				1A0E3A9B2862F7E200132FCB /* SceneDelegate.swift in Sources */,
 				1A3B7326286ADD1E007BF626 /* ListHeroesTableView.swift in Sources */,
+				E624E15C2D79EB4A00A8C7A0 /* AppCoordinator.swift in Sources */,
 				1A3B7328286ADEE6007BF626 /* ListHeroesTableViewCell.swift in Sources */,
 				1A821ED4286302EC0024D397 /* CharacterResponseDataModel.swift in Sources */,
 				1A821EC92862FE3C0024D397 /* APIClient.swift in Sources */,
