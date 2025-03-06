@@ -3,7 +3,7 @@ import Foundation
 final class MarvelRepository: MarvelRepositoryProtocol {
     private let dataSource: MarvelDataSourceProtocol
     
-    init(dataSource: MarvelDataSourceProtocol = MarvelDataSource()) {
+    init(dataSource: MarvelDataSourceProtocol) {
         self.dataSource = dataSource
     }
     

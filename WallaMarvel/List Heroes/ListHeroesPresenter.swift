@@ -14,7 +14,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     var ui: ListHeroesUI?
     private let getHeroesUseCase: GetHeroesUseCaseProtocol
     
-    init(getHeroesUseCase: GetHeroesUseCaseProtocol = GetHeroes()) {
+    init(getHeroesUseCase: GetHeroesUseCaseProtocol) {
         self.getHeroesUseCase = getHeroesUseCase
     }
     

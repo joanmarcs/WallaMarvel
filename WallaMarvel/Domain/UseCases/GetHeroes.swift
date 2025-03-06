@@ -7,7 +7,7 @@ protocol GetHeroesUseCaseProtocol {
 struct GetHeroes: GetHeroesUseCaseProtocol {
     private let repository: MarvelRepositoryProtocol
     
-    init(repository: MarvelRepositoryProtocol = MarvelRepository()) {
+    init(repository: MarvelRepositoryProtocol) {
         self.repository = repository
     }
     

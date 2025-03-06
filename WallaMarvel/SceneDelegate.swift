@@ -9,7 +9,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let presenter = ListHeroesPresenter()
+        let dataSource = MarvelDataSource()
+        let repository = MarvelRepository(dataSource: dataSource)
+        let getHeroesUseCase = GetHeroes(repository: repository)
+        let presenter = ListHeroesPresenter(getHeroesUseCase: getHeroesUseCase)
         let listHeroesViewController = ListHeroesViewController()
         listHeroesViewController.presenter = presenter
         
