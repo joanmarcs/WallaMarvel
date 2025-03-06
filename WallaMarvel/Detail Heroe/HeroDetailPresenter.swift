@@ -20,16 +20,33 @@ protocol HeroDetailPresenterProtocol: AnyObject {
     func cancelFetch()
 }
 
+actor HeroDetailState {
+    private var comics: [Comic] = []
+    private var isLoading = false
+    private var allComicsLoaded = false
+    private var offset = 0
+
+    func getComics() -> [Comic] { comics }
+
+    func addComics(_ newComics: [Comic]) {
+        comics.append(contentsOf: newComics)
+        offset += HeroesConstants.limit
+    }
+
+    func isCurrentlyLoading() -> Bool { isLoading }
+    func setLoading(_ loading: Bool) { isLoading = loading }
+    func setAllComicsLoaded() { allComicsLoaded = true }
+    func hasLoadedAllComics() -> Bool { allComicsLoaded }
+    func getOffset() -> Int { offset }
+}
+
 final class HeroDetailPresenter: HeroDetailPresenterProtocol {
     var ui: HeroDetailUI?
     private let getHeroDataUseCase: GetHeroDataUseCaseProtocol
     private let getHeroComicsUseCase: GetHeroComicsUseCaseProtocol
     private let heroId: Int
     
-    private var offset = 0
-    private var isLoading = false
-    private var allComicsLoaded = false
-    private var comics: [Comic] = []
+    private let state = HeroDetailState()
     
     private var fetchHeroTask: Task<Void, Never>?
     private var fetchComicsTask: Task<Void, Never>?
@@ -58,34 +75,33 @@ final class HeroDetailPresenter: HeroDetailPresenterProtocol {
     }
     
     public func getHeroComics() {
-        guard !isLoading, !allComicsLoaded else { return }
-        
         fetchComicsTask?.cancel()
-        isLoading = true
         
         fetchComicsTask = Task {
+            guard !(await state.isCurrentlyLoading()), !(await state.hasLoadedAllComics()) else { return }
+            await state.setLoading(true)
             do {
-                let newComics = try await getHeroComicsUseCase.execute(heroId: heroId, offset: offset)
-                
+                let newComics = try await getHeroComicsUseCase.execute(heroId: heroId, offset: await state.getOffset())
+
                 if Task.isCancelled { return }
                 
                 if newComics.isEmpty {
-                    allComicsLoaded = true
+                    await state.setAllComicsLoaded()
                 } else {
-                    comics.append(contentsOf: newComics)
-                    offset += HeroesConstants.limit
+                    await state.addComics(newComics)
                 }
                 
                 await updateUI {
-                    self.ui?.updateComics(comics: newComics) }
-                isLoading = false
+                    self.ui?.updateComics(comics: newComics)
+                }
             } catch {
                 if Task.isCancelled { return }
                 
                 await updateUI {
-                    self.ui?.showError(message: "Failed to load hero comics.") }
-                isLoading = false
+                    self.ui?.showError(message: "Failed to load hero comics.")
+                }
             }
+            await state.setLoading(false)
         }
     }
     
