@@ -20,4 +20,11 @@ struct CharacterDataContainer: Decodable {
         
         self.characters = try data.decode([CharacterDataModel].self, forKey: .characters)
     }
+    
+    init(count: Int = 0, limit: Int = 0, offset: Int = 0, characters: [CharacterDataModel] = []) {
+        self.count = count
+        self.limit = limit
+        self.offset = offset
+        self.characters = characters    
+    }
 }

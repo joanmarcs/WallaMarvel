@@ -27,4 +27,11 @@ struct CharacterComicsDataContainer: Decodable {
         
         self.comics = try data.decode([ComicDataModel].self, forKey: .comics)
     }
+    
+    init (count: Int, limit: Int, offset: Int, comics: [ComicDataModel]) {
+        self.count = count
+        self.limit = limit
+        self.offset = offset
+        self.comics = comics
+    }
 }

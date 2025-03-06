@@ -47,6 +47,12 @@
 		E624E1782D79F9F700A8C7A0 /* ComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1772D79F9F700A8C7A0 /* ComicCollectionViewCell.swift */; };
 		E624E17A2D79FA1E00A8C7A0 /* HeroComicsAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1792D79FA1E00A8C7A0 /* HeroComicsAdapter.swift */; };
 		E624E17C2D7A00D900A8C7A0 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E17B2D7A00D900A8C7A0 /* ApiError.swift */; };
+		E624E1892D7A0BE700A8C7A0 /* MockMarvelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1882D7A0BE700A8C7A0 /* MockMarvelRepository.swift */; };
+		E624E18B2D7A0C4600A8C7A0 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E18A2D7A0C4600A8C7A0 /* DomainTests.swift */; };
+		E624E18F2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E18E2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift */; };
+		E624E1912D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1902D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift */; };
+		E624E1932D7A104D00A8C7A0 /* MarvelDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1922D7A104D00A8C7A0 /* MarvelDataSourceTests.swift */; };
+		E624E1952D7A10D700A8C7A0 /* MockAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1942D7A10D700A8C7A0 /* MockAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +123,12 @@
 		E624E1772D79F9F700A8C7A0 /* ComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCollectionViewCell.swift; sourceTree = "<group>"; };
 		E624E1792D79FA1E00A8C7A0 /* HeroComicsAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroComicsAdapter.swift; sourceTree = "<group>"; };
 		E624E17B2D7A00D900A8C7A0 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		E624E1882D7A0BE700A8C7A0 /* MockMarvelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMarvelRepository.swift; sourceTree = "<group>"; };
+		E624E18A2D7A0C4600A8C7A0 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		E624E18E2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMarvelDataSource.swift; sourceTree = "<group>"; };
+		E624E1902D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelRepositoryTests.swift; sourceTree = "<group>"; };
+		E624E1922D7A104D00A8C7A0 /* MarvelDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelDataSourceTests.swift; sourceTree = "<group>"; };
+		E624E1942D7A10D700A8C7A0 /* MockAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +208,8 @@
 		1A0E3AAE2862F7E300132FCB /* WallaMarvelTests */ = {
 			isa = PBXGroup;
 			children = (
+				E624E18C2D7A0EDA00A8C7A0 /* DataTests */,
+				E624E1862D7A0BC500A8C7A0 /* DomaintTests */,
 				1A0E3AAF2862F7E300132FCB /* WallaMarvelTests.swift */,
 			);
 			path = WallaMarvelTests;
@@ -332,6 +346,42 @@
 				1A821EC52862FD500024D397 /* Detail Heroe */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		E624E1862D7A0BC500A8C7A0 /* DomaintTests */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1872D7A0BCE00A8C7A0 /* DomainMocks */,
+				E624E18A2D7A0C4600A8C7A0 /* DomainTests.swift */,
+			);
+			path = DomaintTests;
+			sourceTree = "<group>";
+		};
+		E624E1872D7A0BCE00A8C7A0 /* DomainMocks */ = {
+			isa = PBXGroup;
+			children = (
+				E624E1882D7A0BE700A8C7A0 /* MockMarvelRepository.swift */,
+			);
+			path = DomainMocks;
+			sourceTree = "<group>";
+		};
+		E624E18C2D7A0EDA00A8C7A0 /* DataTests */ = {
+			isa = PBXGroup;
+			children = (
+				E624E18D2D7A0EE200A8C7A0 /* DataMocks */,
+				E624E1902D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift */,
+				E624E1922D7A104D00A8C7A0 /* MarvelDataSourceTests.swift */,
+			);
+			path = DataTests;
+			sourceTree = "<group>";
+		};
+		E624E18D2D7A0EE200A8C7A0 /* DataMocks */ = {
+			isa = PBXGroup;
+			children = (
+				E624E18E2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift */,
+				E624E1942D7A10D700A8C7A0 /* MockAPIClient.swift */,
+			);
+			path = DataMocks;
 			sourceTree = "<group>";
 		};
 		E6E551DC10F86994C93B46B1 /* Pods */ = {
@@ -624,7 +674,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E624E18B2D7A0C4600A8C7A0 /* DomainTests.swift in Sources */,
+				E624E18F2D7A0F1400A8C7A0 /* MockMarvelDataSource.swift in Sources */,
+				E624E1892D7A0BE700A8C7A0 /* MockMarvelRepository.swift in Sources */,
+				E624E1932D7A104D00A8C7A0 /* MarvelDataSourceTests.swift in Sources */,
 				1A0E3AB02862F7E300132FCB /* WallaMarvelTests.swift in Sources */,
+				E624E1912D7A0FE500A8C7A0 /* MarvelRepositoryTests.swift in Sources */,
+				E624E1952D7A10D700A8C7A0 /* MockAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
