@@ -38,5 +38,13 @@ extension ListHeroesViewController: UITableViewDelegate {
         print("HEROE SELECTED: \(listHeroesProvider?.heroes[indexPath.row].name)")
 
     }
+    
+    public func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let totalHeroes = listHeroesProvider?.heroes.count ?? 0
+        
+        if indexPath.row == totalHeroes - 1 {
+            presenter?.getHeroes()
+        }
+    }
 }
 
