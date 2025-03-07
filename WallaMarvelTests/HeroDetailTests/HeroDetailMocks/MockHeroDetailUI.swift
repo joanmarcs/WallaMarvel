@@ -24,4 +24,11 @@ final class MockHeroDetailUI: HeroDetailUI {
     func showError(message: String) {
         lastErrorMessage = message
     }
+    
+    func showLoadingIndicator() {
+    }
+    
+    func hideLoadingIndicator() {
+    }
+
 }
