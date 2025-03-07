@@ -21,6 +21,7 @@ pod install
 
 ### **3. Run the app**
 open WallaMarvel.xcworkspace
+
 run on a simulator or device
 
 
