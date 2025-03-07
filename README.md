@@ -13,7 +13,9 @@ git clone https://github.com/joanmarcs/WallaMarvel
 
 ### **2. Pod install**
 cd WallaMarvel
+
 **Important: be sure to have at least 1.16.2 CocoaPods version**
+
 pod install
 
 
