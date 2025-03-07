@@ -30,6 +30,11 @@ final class ListHeroesAdapter: NSObject, UITableViewDataSource {
         }
     }
     
+    func deleteData() {
+        self.heroes.removeAll()
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         heroes.count
     }

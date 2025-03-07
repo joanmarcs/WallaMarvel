@@ -16,6 +16,19 @@ final class ListHeroesView: UIView {
         return tableView
     }()
     
+    let searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "Search heroes..."
+        searchController.obscuresBackgroundDuringPresentation = false
+        return searchController
+    }()
+
+    private let searchSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     init() {
         super.init(frame: .zero)
         setup()
@@ -28,6 +41,7 @@ final class ListHeroesView: UIView {
     private func setup() {
         addSubviews()
         addContraints()
+        configureSearchBar()
     }
     
     private func addSubviews() {
@@ -42,4 +56,22 @@ final class ListHeroesView: UIView {
             heroesTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
+    
+    private func configureSearchBar() {
+         searchController.searchBar.addSubview(searchSpinner)
+         searchSpinner.translatesAutoresizingMaskIntoConstraints = false
+         
+         NSLayoutConstraint.activate([
+             searchSpinner.trailingAnchor.constraint(equalTo: searchController.searchBar.trailingAnchor, constant: -16),
+             searchSpinner.centerYAnchor.constraint(equalTo: searchController.searchBar.centerYAnchor)
+         ])
+     }
+
+     func startLoading() {
+         searchSpinner.startAnimating()
+     }
+
+     func stopLoading() {
+         searchSpinner.stopAnimating()
+     }
 }

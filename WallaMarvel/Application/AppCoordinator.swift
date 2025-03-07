@@ -24,7 +24,8 @@ final class AppCoordinator: ListHeroesNavigatorProtocol  {
         //Dependency injection
         let repository = MarvelRepository(dataSource: MarvelDataSource())
         let getHeroesUseCase = GetHeroes(repository: repository)
-        let presenter = ListHeroesPresenter(getHeroesUseCase: getHeroesUseCase, navigator: self)
+        let searchHeroesUseCase = SearchHeroes(repository: repository)
+        let presenter = ListHeroesPresenter(getHeroesUseCase: getHeroesUseCase, searchHeroesUseCase: searchHeroesUseCase, navigator: self)
         let listHeroesViewController = ListHeroesViewController()
         listHeroesViewController.presenter = presenter
 
