@@ -47,9 +47,18 @@ extension HeroDetailViewController: HeroDetailUI {
     }
     
     public func showError(message: String) {
+        mainView.stopLoading()
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    func showLoadingIndicator() {
+        mainView.startLoading()
+    }
+    
+    func hideLoadingIndicator() {
+        mainView.stopLoading()
     }
 }
 

@@ -71,6 +71,13 @@ public final class HeroDetailView: UIView {
         return collectionView
     }()
     
+    private let loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -113,6 +120,7 @@ public final class HeroDetailView: UIView {
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(descriptionLabel)
         stackView.addArrangedSubview(comicsTitleLabel)
+        stackView.addArrangedSubview(loadingSpinner)
         stackView.addArrangedSubview(comicsCollectionView)
         contentView.addSubview(stackView)
         
@@ -127,8 +135,19 @@ public final class HeroDetailView: UIView {
             imageView.widthAnchor.constraint(equalTo: stackView.widthAnchor),
             imageView.heightAnchor.constraint(equalTo: stackView.widthAnchor),
             
-            comicsCollectionView.heightAnchor.constraint(equalToConstant: 380)
+            comicsCollectionView.heightAnchor.constraint(equalToConstant: 380),
+            loadingSpinner.centerXAnchor.constraint(equalTo: stackView.centerXAnchor)
         ])
+    }
+    
+    public func startLoading() {
+        loadingSpinner.isHidden = false
+        loadingSpinner.startAnimating()
+    }
+
+    public func stopLoading() {
+        loadingSpinner.isHidden = true
+        loadingSpinner.stopAnimating()
     }
 }
 

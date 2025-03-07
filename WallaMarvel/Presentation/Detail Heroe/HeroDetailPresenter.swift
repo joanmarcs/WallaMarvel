@@ -11,6 +11,8 @@ protocol HeroDetailUI: AnyObject {
     func updateHeroDetail(hero: Hero)
     func updateComics(comics: [Comic])
     func showError(message: String)
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
 }
 
 protocol HeroDetailPresenterProtocol: AnyObject {
@@ -80,6 +82,9 @@ final class HeroDetailPresenter: HeroDetailPresenterProtocol {
         fetchComicsTask = Task {
             guard !(await state.isCurrentlyLoading()), !(await state.hasLoadedAllComics()) else { return }
             await state.setLoading(true)
+            await MainActor.run {
+                self.ui?.showLoadingIndicator()
+            }
             do {
                 let newComics = try await getHeroComicsUseCase.execute(heroId: heroId, offset: await state.getOffset())
 
@@ -100,6 +105,9 @@ final class HeroDetailPresenter: HeroDetailPresenterProtocol {
                 await updateUI {
                     self.ui?.showError(message: "Failed to load hero comics.")
                 }
+            }
+            await MainActor.run {
+                self.ui?.hideLoadingIndicator()
             }
             await state.setLoading(false)
         }
