@@ -81,6 +81,8 @@ public final class HeroDetailView: UIView {
     }
     
     private func setup() {
+        
+        self.backgroundColor = .systemBackground
         addSubviews()
         addConstraints()
         setupContent()
