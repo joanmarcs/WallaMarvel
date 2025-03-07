@@ -63,6 +63,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
         "List of Heroes"
     }
     
+    // Updates the search text and decides whether to fetch new data
     func updateSearchText(_ searchText: String) {
         if searchText.isEmpty {
             self.ui?.hideLoadingIndicator()
@@ -73,6 +74,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
         }
     }
     
+    // Cancels search and reloads the full list of heroes
     func cancelSearch() {
         self.ui?.removeHeroes()
         getHeroes()
@@ -80,6 +82,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
     
     // MARK: UseCases
     
+    // Fetches the list of heroes with pagination
     func getHeroes() {
         currentSearchText = ""
         fetchTask?.cancel()
@@ -113,6 +116,7 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
         }
     }
     
+    // Searches for heroes by name using the API.
     func searchHeroes(searchText: String) {
         fetchTask?.cancel()
 
