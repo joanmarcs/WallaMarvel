@@ -8,7 +8,7 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockNavigator: ListHeroesNavigatorProtocol {
+final class MockNavigator: ListHeroesNavigatorProtocol {
     var didNavigateToHeroDetail = false
     var navigatedHeroId: Int?
 

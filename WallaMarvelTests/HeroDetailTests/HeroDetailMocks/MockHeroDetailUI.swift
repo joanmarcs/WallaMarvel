@@ -8,7 +8,7 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockHeroDetailUI: HeroDetailUI {
+final class MockHeroDetailUI: HeroDetailUI {
     var updatedHero: Hero?
     var updatedComics: [Comic] = []
     var lastErrorMessage: String?

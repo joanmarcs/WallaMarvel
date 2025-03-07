@@ -66,6 +66,7 @@
 		E624E1B42D7A460100A8C7A0 /* HeroDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */; };
 		E624E1B72D7A477400A8C7A0 /* HeroDetailUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */; };
 		E624E1B92D7A556500A8C7A0 /* SearchHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E624E1B82D7A556500A8C7A0 /* SearchHeroes.swift */; };
+		E6DF547C2D7AEA7700FF511C /* MockSearchHeroesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6DF547B2D7AEA7700FF511C /* MockSearchHeroesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,7 @@
 		E624E1B32D7A460100A8C7A0 /* HeroDetailPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailPresenterTests.swift; sourceTree = "<group>"; };
 		E624E1B62D7A477400A8C7A0 /* HeroDetailUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailUITests.swift; sourceTree = "<group>"; };
 		E624E1B82D7A556500A8C7A0 /* SearchHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHeroes.swift; sourceTree = "<group>"; };
+		E6DF547B2D7AEA7700FF511C /* MockSearchHeroesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchHeroesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -430,6 +432,7 @@
 				E624E1982D7A123300A8C7A0 /* MockGetHeroUseCase.swift */,
 				E624E19A2D7A124500A8C7A0 /* MockNavigator.swift */,
 				E624E19E2D7A126C00A8C7A0 /* MockListHeroesUI.swift */,
+				E6DF547B2D7AEA7700FF511C /* MockSearchHeroesUseCase.swift */,
 			);
 			path = ListHeroesMocks;
 			sourceTree = "<group>";
@@ -776,6 +779,7 @@
 				E624E1B22D7A459F00A8C7A0 /* MockHeroDetailUI.swift in Sources */,
 				E624E1892D7A0BE700A8C7A0 /* MockMarvelRepository.swift in Sources */,
 				E624E1932D7A104D00A8C7A0 /* MarvelDataSourceTests.swift in Sources */,
+				E6DF547C2D7AEA7700FF511C /* MockSearchHeroesUseCase.swift in Sources */,
 				E624E1B42D7A460100A8C7A0 /* HeroDetailPresenterTests.swift in Sources */,
 				E624E1992D7A123300A8C7A0 /* MockGetHeroUseCase.swift in Sources */,
 				E624E19F2D7A126C00A8C7A0 /* MockListHeroesUI.swift in Sources */,

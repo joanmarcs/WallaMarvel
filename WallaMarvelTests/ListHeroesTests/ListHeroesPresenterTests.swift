@@ -11,30 +11,34 @@ import XCTest
 final class ListHeroesPresenterTests: XCTestCase {
 
     var presenter: ListHeroesPresenter!
-    var mockUseCase: MockGetHeroesUseCase!
+    var mockGetHeroesUseCase: MockGetHeroesUseCase!
+    var mockSearchHeroesUseCase: MockSearchHeroesUseCase!
     var mockNavigator: MockNavigator!
     var mockUI: MockListHeroesUI!
 
     override func setUp() {
         super.setUp()
-        mockUseCase = MockGetHeroesUseCase()
+        mockGetHeroesUseCase = MockGetHeroesUseCase()
         mockNavigator = MockNavigator()
+        mockSearchHeroesUseCase = MockSearchHeroesUseCase()
         mockUI = MockListHeroesUI()
         
-        presenter = ListHeroesPresenter(getHeroesUseCase: mockUseCase, navigator: mockNavigator)
+        presenter = ListHeroesPresenter(getHeroesUseCase: mockGetHeroesUseCase,
+                                        searchHeroesUseCase: mockSearchHeroesUseCase, navigator: mockNavigator)
         presenter.ui = mockUI
     }
 
     override func tearDown() {
-        mockUseCase = nil
+        mockGetHeroesUseCase = nil
         mockNavigator = nil
         mockUI = nil
         presenter = nil
+        mockSearchHeroesUseCase = nil
         super.tearDown()
     }
 
     func testGetHeroes_shouldUpdateUI_whenUseCaseSucceeds() async {
-        mockUseCase.shouldThrowError = false
+        mockGetHeroesUseCase.shouldThrowError = false
         let expectation = expectation(description: "Heroes data should be loaded")
 
         presenter.getHeroes()
@@ -50,7 +54,7 @@ final class ListHeroesPresenterTests: XCTestCase {
     }
 
     func testGetHeroes_shouldShowError_whenUseCaseFails() async {
-        mockUseCase.shouldThrowError = true
+        mockGetHeroesUseCase.shouldThrowError = true
         let expectation = expectation(description: "Error message should be displayed")
 
         presenter.getHeroes()
@@ -71,6 +75,27 @@ final class ListHeroesPresenterTests: XCTestCase {
 
         XCTAssertTrue(mockNavigator.didNavigateToHeroDetail)
         XCTAssertEqual(mockNavigator.navigatedHeroId, 99)
+    }
+    
+    func testSearchHeroes_shouldUpdateUI_whenUseCaseSucceeds() async {
+        mockSearchHeroesUseCase.shouldThrowError = false
+        let expectation = expectation(description: "Search results should be loaded")
+
+        presenter.searchHeroes(searchText: "Iron")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation.fulfill()
+        }
+
+        await fulfillment(of: [expectation], timeout: 2.0)
+
+        XCTAssertEqual(mockUI.heroesUpdated.count, 1)
+        XCTAssertEqual(mockUI.heroesUpdated.first?.name, "Iron Man")
+    }
+
+    func testUpdateSearchText_shouldShowLoadingIndicator() {
+        presenter.updateSearchText("Hulk")
+        XCTAssertTrue(mockUI.showLoadingIndicatorCalled)
     }
 }
 

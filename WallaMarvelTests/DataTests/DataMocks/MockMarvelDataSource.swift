@@ -8,8 +8,7 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockMarvelDataSource: MarvelDataSourceProtocol {
-    
+final class MockMarvelDataSource: MarvelDataSourceProtocol {
     var shouldThrowError = false
 
     func getHeroes(offset: Int) async throws -> CharacterDataContainer {
@@ -39,6 +38,22 @@ class MockMarvelDataSource: MarvelDataSourceProtocol {
             ComicDataModel(id: 101, title: "Iron Man #1", thumbnail: Thumbnail(path: "ironman1", extension: "png")),
             ComicDataModel(id: 102, title: "Iron Man #2", thumbnail: Thumbnail(path: "ironman2", extension: "png"))
         ])
+    }
+    
+    func searchHeroes(startsWith: String) async throws -> CharacterDataContainer {
+        if shouldThrowError {
+            throw APIError.serverError
+        }
+
+        let heroes = [
+            CharacterDataModel(id: 1, name: "Iron Man", thumbnail: Thumbnail(path: "ironman", extension: "png"), description: "A billionaire genius."),
+            CharacterDataModel(id: 2, name: "Spider-Man", thumbnail: Thumbnail(path: "spiderman", extension: "png"), description: "Friendly neighborhood hero."),
+            CharacterDataModel(id: 3, name: "Hulk", thumbnail: Thumbnail(path: "hulk", extension: "png"), description: "The strongest Avenger.")
+        ]
+
+        let filteredHeroes = heroes.filter { $0.name.lowercased().hasPrefix(startsWith.lowercased()) }
+
+        return CharacterDataContainer(count: filteredHeroes.count, limit: 10, offset: 0, characters: filteredHeroes)
     }
 }
 

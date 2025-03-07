@@ -8,7 +8,7 @@
 import XCTest
 @testable import WallaMarvel
 
-class MarvelDataSourceTests: XCTestCase {
+final class MarvelDataSourceTests: XCTestCase {
     
     var mockAPIClient: MockAPIClient!
     var dataSource: MarvelDataSource!

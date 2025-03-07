@@ -8,9 +8,12 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockListHeroesUI: ListHeroesUI {
+final class MockListHeroesUI: ListHeroesUI {
     var heroesUpdated: [Hero] = []
     var lastErrorMessage: String?
+    var removeHeroesCalled = false
+    var showLoadingIndicatorCalled = false
+    var hideLoadingIndicatorCalled = false
 
     func update(heroes: [Hero]) {
         heroesUpdated = heroes
@@ -18,5 +21,17 @@ class MockListHeroesUI: ListHeroesUI {
 
     func showError(message: String) {
         lastErrorMessage = message
+    }
+    
+    func removeHeroes() {
+        removeHeroesCalled = true
+    }
+    
+    func showLoadingIndicator() {
+        showLoadingIndicatorCalled = true
+    }
+
+    func hideLoadingIndicator() {
+        hideLoadingIndicatorCalled = true
     }
 }

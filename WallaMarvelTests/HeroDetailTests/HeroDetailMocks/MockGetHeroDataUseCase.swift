@@ -8,7 +8,7 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockGetHeroDataUseCase: GetHeroDataUseCaseProtocol {
+final class MockGetHeroDataUseCase: GetHeroDataUseCaseProtocol {
     var shouldThrowError = false
     var hero: Hero = Hero(id: 1, name: "Iron Man", thumbnail: HeroImage(url: "ironman.png"), description: "Billionaire genius")
 

@@ -8,7 +8,7 @@
 import Foundation
 @testable import WallaMarvel
 
-class MockGetHeroComicsUseCase: GetHeroComicsUseCaseProtocol {
+final class MockGetHeroComicsUseCase: GetHeroComicsUseCaseProtocol {
     var shouldThrowError = false
     var comics: [Comic] = [
         Comic(id: 101, title: "Iron Man #1", thumbnail: HeroImage(url: "ironman1.png")),
