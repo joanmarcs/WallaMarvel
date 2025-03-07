@@ -23,9 +23,10 @@ final class ListHeroesView: UIView {
         return searchController
     }()
 
-    private let searchSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .medium)
+    private let loadingSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
         spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
         return spinner
     }()
     
@@ -41,11 +42,11 @@ final class ListHeroesView: UIView {
     private func setup() {
         addSubviews()
         addContraints()
-        configureSearchBar()
     }
     
     private func addSubviews() {
         addSubview(heroesTableView)
+        addSubview(loadingSpinner)
     }
     
     private func addContraints() {
@@ -54,24 +55,17 @@ final class ListHeroesView: UIView {
             heroesTableView.trailingAnchor.constraint(equalTo: trailingAnchor),
             heroesTableView.topAnchor.constraint(equalTo: topAnchor),
             heroesTableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            loadingSpinner.centerXAnchor.constraint(equalTo: centerXAnchor),
+            loadingSpinner.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
-    private func configureSearchBar() {
-         searchController.searchBar.addSubview(searchSpinner)
-         searchSpinner.translatesAutoresizingMaskIntoConstraints = false
-         
-         NSLayoutConstraint.activate([
-             searchSpinner.trailingAnchor.constraint(equalTo: searchController.searchBar.trailingAnchor, constant: -16),
-             searchSpinner.centerYAnchor.constraint(equalTo: searchController.searchBar.centerYAnchor)
-         ])
-     }
 
      func startLoading() {
-         searchSpinner.startAnimating()
+         loadingSpinner.startAnimating()
      }
 
      func stopLoading() {
-         searchSpinner.stopAnimating()
+         loadingSpinner.stopAnimating()
      }
 }

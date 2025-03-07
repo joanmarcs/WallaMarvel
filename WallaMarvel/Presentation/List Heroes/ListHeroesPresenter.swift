@@ -6,6 +6,7 @@ protocol ListHeroesPresenterProtocol: AnyObject {
     func getHeroes()
     func didSelectHero(_ hero: Hero)
     func cancelFetch()
+    func resetState()
     func updateSearchText(_ searchText: String)
     func searchHeroes(searchText: String)
     func cancelSearch()
@@ -91,10 +92,18 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
             guard !(await state.isCurrentlyLoading()), !(await state.hasLoadedAllHeroes()) else { return }
             
             await state.setLoading(true)
+            await MainActor.run {
+                self.ui?.showLoadingIndicator()
+            }
             
             do {
                 let newHeroes = try await getHeroesUseCase.execute(offset: await state.getOffset())
-                if Task.isCancelled { return }
+                if Task.isCancelled {
+                    await MainActor.run {
+                        self.ui?.hideLoadingIndicator()
+                    }
+                    return
+                }
                 
                 if newHeroes.isEmpty {
                     await state.setAllHeroesLoaded()
@@ -106,12 +115,21 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
                     self.ui?.update(heroes: newHeroes)
                 }
             } catch {
-                if Task.isCancelled { return }
+                if Task.isCancelled {
+                    await MainActor.run {
+                        self.ui?.hideLoadingIndicator()
+                    }
+                    return
+                }
                 
                 await MainActor.run {
                     self.ui?.showError(message: "Failed to load heroes.")
                 }
             }
+            await MainActor.run {
+                self.ui?.hideLoadingIndicator()
+            }
+
             await state.setLoading(false)
         }
     }
@@ -128,14 +146,24 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
             
             do {
                 let searchedHeroes = try await searchHeroesUseCase.execute(startsWith: searchText)
-                if Task.isCancelled { return }
+                if Task.isCancelled {
+                    await MainActor.run {
+                        self.ui?.hideLoadingIndicator()
+                    }
+                    return
+                }
                 
                 await MainActor.run {
                     self.ui?.update(heroes: searchedHeroes)
                     self.ui?.hideLoadingIndicator()
                 }
             } catch {
-                if Task.isCancelled { return }
+                if Task.isCancelled {
+                    await MainActor.run {
+                        self.ui?.hideLoadingIndicator()
+                    }
+                    return
+                }
                 
                 await MainActor.run {
                     self.ui?.showError(message: "Failed to search heroes.")
@@ -151,6 +179,13 @@ final class ListHeroesPresenter: ListHeroesPresenterProtocol {
 
     public func cancelFetch() {
         fetchTask?.cancel()
+    }
+    
+    func resetState() {
+        Task {
+            await state.setLoading(false)
+            await state.setOffset(toValue: state.getHeroes().count) // Reset pagination offset
+        }
     }
 }
 

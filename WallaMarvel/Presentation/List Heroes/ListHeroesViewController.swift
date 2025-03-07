@@ -28,6 +28,7 @@ final class ListHeroesViewController: UIViewController {
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         presenter?.cancelFetch()
+        presenter?.resetState()
     }
 }
 
